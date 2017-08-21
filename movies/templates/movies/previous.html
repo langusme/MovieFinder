@@ -1,0 +1,25 @@
+{% extends "movies/base.html" %}
+
+{% block title %}Previous Movies | Movie Finder{% endblock %}
+{% block pagetitle %}Previous Movies{% endblock %}
+{% block pageblurb %}This page shows you all of the movies that aired on Free2Air TV in the past 2 weeks{% endblock %}
+
+{% block body %}
+    <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+    {% for movie in all_movies %}
+        <div class="col-md-3">
+            <div class="panel" style="border-radius: 0px; background-color: #55e892">
+                <div class="panel-body" style="max-height: 180px; min-height: 180px">
+                    <a href="{% url 'movies:detail' movie.id %}">
+                        <h1 style="color: black" class="text-center">{{ movie.movie_name }}</h1>
+                    </a>
+                        <h1 style="color: black" class="text-center"><small>{{ movie.air_time }} on {{ movie.air_date}}</small></h1>
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    </div>
+{% endblock %}

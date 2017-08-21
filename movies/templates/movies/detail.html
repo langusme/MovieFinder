@@ -1,0 +1,12 @@
+{% extends 'movies/base.html' %}
+
+{% block pagetitle %}
+    {{ movie.movie_name }}
+{% endblock %}
+{% block pageblurb %}
+    Channel <strong>{{ movie.channel }}</strong> @ <strong>{{ movie.air_time }}</strong> on the <strong>{{ movie.air_date }}</strong>
+{% endblock %}
+
+{% block body %}
+    <h3>{{ movie.movie_name }}</h3>
+{% endblock %}

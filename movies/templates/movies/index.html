@@ -1,0 +1,43 @@
+{% extends 'movies/base.html' %}
+
+{% block pagetitle %}
+    Movie Finder
+{% endblock %}
+
+
+
+{% block body %}
+    {% now "Y-m-d" as current_date %}
+    <div class="container-fluid">
+        <div class="col-md-6 col-md-offset-3">
+            <h1 class="text-center" style="font-size: 50px">Movies Currently Airing</h1>
+            <hr>
+        </div>
+        <div class="row">
+            {% for movie in all_movies %}
+{#                {% if movie.air_date|date:"Y-m-d" == current_date %}#}
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel" style="border-radius: 0px; background-color: #55e892">
+                            <div class="panel-body">
+                                <a href="{% url 'movies:detail' movie.id %}">
+                                <h1 style="color: black">
+                                    <strong>
+                                        {{ movie.movie_name }}
+                                    </strong> -
+                                    <small>
+                                        {{ movie.channel }} @ {{ movie.air_time }} on {{ movie.air_date }}
+                                    </small>
+                                </h1>
+                                </a>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+{#                {% endif %}#}
+    {#            <a href="{% url 'movies:detail' movie.id %}">{{ movie.movie_name }} - {{ movie.pk }}</a>#}
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}
